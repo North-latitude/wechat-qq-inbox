@@ -21,7 +21,7 @@
     <string name="inbox_settings">采集与同步设置</string>
     <string name="inbox_debug_test">插入一条测试消息（仅 debug）</string>
     <string name="conversation_title">消息</string>
-    <string name="conversation_subtitle">微信 / QQ · 本地收件箱</string>
+    <string name="conversation_subtitle">微信 / QQ 本地收件箱</string>
     <string name="conversation_search_hint">搜索群、联系人、消息</string>
     <string name="conversation_recent">最近消息</string>
     <string name="conversation_unread_count">%1$d 条未读</string>

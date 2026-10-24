@@ -1,9 +1,9 @@
-name: unified-inbox
+﻿name: unified-inbox
 
 services:
   inbox:
     build: .
-    image: unified-inbox:0.4.0
+    image: unified-inbox:0.4.1
     container_name: unified-inbox
     restart: unless-stopped
     ports:
@@ -22,3 +22,4 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
+

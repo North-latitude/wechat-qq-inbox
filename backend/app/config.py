@@ -8,7 +8,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-VERSION = "0.4.0"
+VERSION = "0.4.1"
 ROOT_DIR = Path(__file__).resolve().parents[2]
 
 
