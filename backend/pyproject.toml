@@ -1,6 +1,6 @@
 [project]
 name = "unified-inbox-backend"
-version = "0.1.0"
+version = "0.4.0"
 description = "Local FastAPI + SQLite backend for the WeChat/QQ unified inbox"
 requires-python = ">=3.11"
 

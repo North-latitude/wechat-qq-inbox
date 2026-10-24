@@ -3,7 +3,7 @@ name: unified-inbox
 services:
   inbox:
     build: .
-    image: unified-inbox:0.1.0
+    image: unified-inbox:0.4.0
     container_name: unified-inbox
     restart: unless-stopped
     ports:
