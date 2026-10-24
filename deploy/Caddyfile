@@ -1,0 +1,6 @@
+# Personal, single-user HTTPS reverse proxy example.
+# Replace inbox.example.com and use a public DNS name with ports 80/443 reachable.
+inbox.example.com {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:8787
+}

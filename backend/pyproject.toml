@@ -1,0 +1,16 @@
+[project]
+name = "unified-inbox-backend"
+version = "0.1.0"
+description = "Local FastAPI + SQLite backend for the WeChat/QQ unified inbox"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:cacheprovider -p no:tmpdir"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

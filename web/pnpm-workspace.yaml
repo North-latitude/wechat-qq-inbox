@@ -1,0 +1,2 @@
+# This folder is intentionally a single-package workspace.
+# Build scripts are disabled in .npmrc; esbuild ships a prebuilt binary.

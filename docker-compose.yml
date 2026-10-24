@@ -1,0 +1,24 @@
+name: unified-inbox
+
+services:
+  inbox:
+    build: .
+    image: unified-inbox:0.1.0
+    container_name: unified-inbox
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8787}:8787"
+    environment:
+      APP_TOKEN: "${APP_TOKEN:?APP_TOKEN is required; copy .env.docker.example to .env and set a random token}"
+      APP_TIMEZONE: "${APP_TIMEZONE:-Asia/Shanghai}"
+      APP_COLLECTOR_OFFLINE_SECONDS: "${APP_COLLECTOR_OFFLINE_SECONDS:-180}"
+      APP_STALE_MINUTES: "${APP_STALE_MINUTES:-120}"
+      APP_DB_PATH: /app/backend/data/inbox.db
+    volumes:
+      - ./data:/app/backend/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8787/api/v1/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
