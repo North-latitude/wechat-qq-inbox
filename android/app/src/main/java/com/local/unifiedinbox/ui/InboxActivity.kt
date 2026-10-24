@@ -37,13 +37,16 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material.icons.outlined.Delete
+import androidx.compose.material.icons.outlined.Done
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
@@ -199,7 +202,6 @@ private fun ConversationListRoute(
     var unreadOnly by rememberSaveable { mutableStateOf(false) }
     var loading by remember { mutableStateOf(true) }
     var error by remember { mutableStateOf<String?>(null) }
-    var topMenuExpanded by remember { mutableStateOf(false) }
 
     suspend fun load() {
         runCatching {
@@ -249,10 +251,10 @@ private fun ConversationListRoute(
                             contentDescription = null,
                             contentScale = ContentScale.Fit,
                             modifier = Modifier
-                                .size(36.dp)
-                                .clip(RoundedCornerShape(8.dp))
+                                .size(32.dp)
+                                .clip(RoundedCornerShape(7.dp))
                         )
-                        Spacer(Modifier.width(9.dp))
+                        Spacer(Modifier.width(8.dp))
                         Column(modifier = Modifier.weight(1f, fill = false)) {
                             Text(
                                 text = stringResource(R.string.conversation_title),
@@ -263,7 +265,7 @@ private fun ConversationListRoute(
                             )
                             Text(
                                 text = stringResource(R.string.conversation_subtitle),
-                                style = MaterialTheme.typography.labelMedium,
+                                style = MaterialTheme.typography.labelSmall,
                                 color = TextSecondary,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
@@ -272,48 +274,31 @@ private fun ConversationListRoute(
                     }
                 },
                 actions = {
-                    Box {
-                        IconButton(onClick = { topMenuExpanded = true }) {
+                    if (BuildConfig.DEBUG) {
+                        IconButton(onClick = { insertDebugMessage(scope) { load() } }) {
                             Icon(
-                                Icons.Outlined.MoreVert,
-                                contentDescription = stringResource(R.string.conversation_more)
+                                Icons.Outlined.Add,
+                                contentDescription = stringResource(R.string.inbox_debug_test)
                             )
                         }
-                        DropdownMenu(
-                            expanded = topMenuExpanded,
-                            onDismissRequest = { topMenuExpanded = false }
-                        ) {
-                            DropdownMenuItem(
-                                text = { Text(stringResource(R.string.conversation_mark_all_read)) },
-                                onClick = {
-                                    topMenuExpanded = false
-                                    markAllRead(scope) { load() }
-                                }
-                            )
-                            DropdownMenuItem(
-                                text = { Text(stringResource(R.string.conversation_refresh)) },
-                                onClick = {
-                                    topMenuExpanded = false
-                                    scope.launch { load() }
-                                }
-                            )
-                            if (BuildConfig.DEBUG) {
-                                DropdownMenuItem(
-                                    text = { Text(stringResource(R.string.inbox_debug_test)) },
-                                    onClick = {
-                                        topMenuExpanded = false
-                                        insertDebugMessage(scope) { load() }
-                                    }
-                                )
-                            }
-                            DropdownMenuItem(
-                                text = { Text(stringResource(R.string.conversation_settings)) },
-                                onClick = {
-                                    topMenuExpanded = false
-                                    onOpenSettings()
-                                }
-                            )
-                        }
+                    }
+                    IconButton(onClick = { markAllRead(scope) { load() } }) {
+                        Icon(
+                            Icons.Outlined.Done,
+                            contentDescription = stringResource(R.string.conversation_mark_all_read)
+                        )
+                    }
+                    IconButton(onClick = { scope.launch { load() } }) {
+                        Icon(
+                            Icons.Outlined.Refresh,
+                            contentDescription = stringResource(R.string.conversation_refresh)
+                        )
+                    }
+                    IconButton(onClick = onOpenSettings) {
+                        Icon(
+                            Icons.Outlined.Settings,
+                            contentDescription = stringResource(R.string.conversation_settings)
+                        )
                     }
                 }
             )

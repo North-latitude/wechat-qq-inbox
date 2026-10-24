@@ -6,7 +6,7 @@
 
 > **第一次用？** 看 [保姆级使用指南](HOW_TO_USE.md)。
 >
-> **APK**：下载 [v0.4.1-debug](https://github.com/North-latitude/wechat-qq-inbox/releases/tag/v0.4.1-debug) 里的 `UnifiedInbox-debug.apk`。
+> **APK**：下载 [v0.4.2-debug](https://github.com/North-latitude/wechat-qq-inbox/releases/tag/v0.4.2-debug) 里的 `UnifiedInbox-debug.apk`。
 >
 > **可选电脑同步**：仓库仍保留 FastAPI + Vue PWA，给想在电脑上再看一份的人用；它不是手机本地模式的前提。需要时再双击 `一键启动.bat`。
 
@@ -86,7 +86,7 @@
 
 下载：
 
-https://github.com/North-latitude/wechat-qq-inbox/releases/tag/v0.4.1-debug
+https://github.com/North-latitude/wechat-qq-inbox/releases/tag/v0.4.2-debug
 
 或使用本地文件：
 

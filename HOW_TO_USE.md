@@ -12,7 +12,7 @@
 下载：
 
 ```
-https://github.com/North-latitude/wechat-qq-inbox/releases/tag/v0.4.1-debug
+https://github.com/North-latitude/wechat-qq-inbox/releases/tag/v0.4.2-debug
 ```
 
 本地文件：
@@ -24,7 +24,7 @@ https://github.com/North-latitude/wechat-qq-inbox/releases/tag/v0.4.1-debug
 SHA-256：
 
 ```
-47BFC5185A847D83F872A369C2CD6C248A87D412A6220E729DC51CB4D6C42C6F
+C2C13773842C9AEAD361F2A9B2518FE5E4AFE7E89B2EEDB810B14840A800346D
 ```
 
 在手机上点开安装。第一次可能提示“允许安装未知应用”，允许即可。
@@ -187,7 +187,7 @@ Android 仍可能杀进程；App 不能承诺 100% 常驻。
 | 现象 | 处理 |
 |---|---|
 | 安装失败 | 允许未知来源；确认下载完整；签名冲突时卸载旧版（会清数据） |
-| 打开 App 没有收件箱 | 确认安装的是 v0.4.1，不是旧 APK |
+| 打开 App 没有收件箱 | 确认安装的是 v0.4.2，不是旧 APK |
 | 顶部提示通知使用权未开启 | 点“去开启”，在系统通知使用权里允许 |
 | 有通知但收件箱为空 | 检查规则是否启用、群名是否完全一致 |
 | 点消息没反应 | 可能已经是已读；未读卡片点击后会标为已读 |
