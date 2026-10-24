@@ -204,6 +204,17 @@ def main() -> int:
         ).stdout.splitlines()
         check(".env" not in tracked, ".env is tracked by git")
         check("backend/data/token.txt" not in tracked, "token file is tracked by git")
+        text_suffixes = {
+            ".bat", ".css", ".gitignore", ".html", ".js", ".json", ".kt", ".kts",
+            ".md", ".ps1", ".py", ".toml", ".txt", ".vue", ".xml", ".yaml", ".yml",
+        }
+        bom_files = [
+            name for name in tracked
+            if Path(name).suffix in text_suffixes
+            and (ROOT / name).is_file()
+            and (ROOT / name).read_bytes().startswith(b"\xef\xbb\xbf")
+        ]
+        check(not bom_files, f"UTF-8 BOM found in: {bom_files}")
 
     if failures:
         print("SECURITY CHECK FAILED")

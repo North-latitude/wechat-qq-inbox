@@ -1,4 +1,4 @@
-﻿[project]
+[project]
 name = "unified-inbox-backend"
 version = "0.4.1"
 description = "Local FastAPI + SQLite backend for the WeChat/QQ unified inbox"
